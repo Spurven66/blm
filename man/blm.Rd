@@ -4,10 +4,12 @@
 \alias{blm}
 \title{Bayesian linear model.}
 \usage{
-blm(model, ...)
+blm(model, alpha, beta, data)
 }
 \arguments{
 \item{model}{A formula describing the model.}
+
+\item{alpha}{Precision hyperparameter}
 
 \item{...}{Additional data, for example a data frame. Feel free to add other options.}
 }
