@@ -9,7 +9,6 @@
 #'
 #' @return A confidence interval for parameter
 #' @export
-
 confint.blm <- function(model, parameter, interval=0.95){
   coefficients = coef.blm(model)
   level = levels(coefficients$parameter)
@@ -18,6 +17,6 @@ confint.blm <- function(model, parameter, interval=0.95){
   cat("[",lower,";",upper,"]")
 }
 
-confint(fitted_model,x)
+#confint(fitted_model,x)
 
-coefs = coef.blm(fitted_model)
+#coefs = coef.blm(fitted_model)
