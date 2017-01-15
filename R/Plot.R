@@ -7,11 +7,6 @@
 #'
 #' @return x-y plot with a line going through it for the fit
 #' @export
-
-# I could imagine that it would be useful to see an x-y plot with a line going through it for the fit.
-
-##Plot x and predicted y
-
 plot.blm = function(object,...){
 
   data = object$data

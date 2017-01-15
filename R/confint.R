@@ -10,7 +10,7 @@
 #' @return A confidence interval for weights
 #' @export
 
-confint.blm <- function(object, parm=0, level=0.95){
+confint.blm <- function(object, parm=0, level=0.95,...){
   mean = object$mean
   sigma = object$sigma
 

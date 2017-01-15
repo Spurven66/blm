@@ -12,7 +12,7 @@
 #' @return A fitted model.
 #' @export
 
-blm <- function(model, alpha, beta, data) {
+blm <- function(model, alpha, beta, data,...) {
   if(!is.data.frame(data)){
     if(is.matrix(data)){
       warning("Default data type is data.frame(). Conversion to data frame is attempted")

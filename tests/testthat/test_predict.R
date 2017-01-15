@@ -12,7 +12,6 @@ test_that("The predicted values and sigma are not null and the dimensions of out
 test_that("The predicted and sigma are not null + dimensions of output is correct with added newData",{
   x <- runif(100,-10,10)
   y <- rnorm(n = 200, m = 0, 5)
-  z <- rnorm(10)
   newData = data.frame(y=y, x=x)
   for(i in 1:length(modelList)){
     if(ncol(newData) != ncol(modelList[[i]]$data)){

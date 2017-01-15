@@ -9,124 +9,130 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
 ```
 
-## Class project: Bayesian linear regresssion
+#Bayesian Linear Model
+###A statistical toolset for performing bayesian linear analysis on data
+The purpose of this package is to provide an extensive toolset of functions for diverse functionality when analysing and intepretting dat in a Bayesian statistical context. 
 
-Implement a constructor for a `blm` class. One approach, taken from the textbook, is implementing an `update` function and a `blm` function:
+------------------------------------------------------------------------------
+
+A short outline of the functions contained in the packages:
+
+*blm <- function(model, alpha, beta, data,...) 
+Takes a prior distribution of model parameters and update it to a posterior
+distribution, based on observed data. This results in a fitted model.
+
+*residuals.blm = function(object,...)
+Calulates the difference between predicted values and observed values for the response variable.
+
+*deviance.blm = function(object,...)
+Calculates the sum of squared distances from the predicted response variables to the observed
+
+*print.blm = function(x, ...) 
+Shortly describes objects of class .blm
+
+*summary.blm = function(object, ...)
+More extensive describtion of objects of class .blm
+
+*plot.blm = function(object,...)
+plots a fitted model, based on observed and fitted variables.
+
+*fitted.blm = function(object, ...)
+Calculates the fitted response variables.
+
+*predict.blm = function(object, newData,...)
+predicted values of the response variable based on a fitted model and a new set of data
+
+*coef.blm = function(object, ...)
+Extracts the coefficients from a fitted model
+
+*confint.blm = function(object, parm=0, level=0.95,...)
+confidence interval for weights 
+
+------------------------------------------------------------------------------
+##Example of use
+Given a small dataset, D, beta = 1 and alpha = diag(1, nrow = 2, ncol = 2):
+
+beta = 1.3
+alpha = diag(1/a, nrow = 2, ncol = 2)
+w0 <- 0.2
+w1 <- 3
+
+formula:
+y~x
+
+x <- rnorm(10)
+y <- rnorm(10, mean = w0 + w1 * x, sd = sqrt(1/beta))
+D = data.frame(y=y, x=x
+
+The fitted model is found by calling
+blm(y~x,alpha = alpha, beta = beta, data = D)
+
+print():
+```{r blm and print }
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/blm.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Print.R")
+
+x <- rnorm(100)
+a <- 1 ; b <- 1.3
+w0 <- 0.2 ; w1 <- 3
+y <- rnorm(100, mean = w0 + w1 * x, sd = sqrt(1/b))
+covariance = diag(1/a, nrow = 2, ncol = 2)
+D = data.frame(y=y,x=x)
+
+fittedModel <- blm(y~x, alpha = covariance, beta = b, data = D)
 
 
-```r
-update <- function(model, prior, ...) { ... }
-blm <- function(model, ...) {
-    # some code here...
-    prior <- make_a_prior_distribution_somehow()
-    posterior <- update(model, prior, ...)
-    # some code that returns an object here...
-}
+print(fittedModel)
+
 ```
 
-To get this version of `blm` to work you need to get the prior in a form you can pass along to `update` but if you did the exercises earlier you should already have a function that does this (although you might want to create a class for these distributions and return them as such so you can manipulate them through an interface if you want to take it a bit further).
+Plot():
+```{r plot}
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Plot.R")
+#plot(fittedModel)
 
-```{r}
-# YOUR IMPLEMENTATION HERE
 ```
 
-### Model methods
+A more extensive view of the fitted model is provided calling summary. The summary demonstrates the coefficients resulting from calling coef(object,..) and the sum of squared distance from observed to estimated response variable y:
 
-There are some polymorphic functions that are generally provided by classes that represent fitted models. Not all models implement all of them, but the more you implement, the more existing code can manipulate your new class; another reason for providing interfaces to objects through functions only.
+Summary():
+```{r Summary}
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Summary.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Coef.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Residuals.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Deviance.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/confint.R")
+summary(fittedModel)
 
-Below is a list of functions that I think your `blm` class should implement. The functions are listed in alphabetical order, but many of them are easier to implement by using one or more of the others. So read through the list before you start programming. If you think that one function can be implemented simpler by calling one of the others, then implement it that way.
-
-In all cases, read the R documentation for the generic function first. You need the documentation to implement the right interface for each function anyway so you might at least read the whole thing. The description in this note is just an overview of what the functions should do.
-
-#### coefficients
-
-This function should return fitted parameters of the model. It is not entirely straightforward to interpret what that means with our Bayesian models where a fitted model is a distribution and not a single point parameter. We could let the function return the fitted distribution, but the way this function is typically used that would make it useless for existing code to access the fitted parameters for this model as a drop in replacement for the corresponding parameters from a `lm` model, for example. Instead, it is probably better to return the point estimates of the parameters which would be the mean of the posterior you compute when fitting.
-
-Return the result as a numeric vector with the parameters named. That would fit what you get from `lm`.
-
-```{r}
-# YOUR IMPLEMENTATION
 ```
 
-#### confint
+The model can be used to predict target variables from new datasets, using the original posterior as a prior. A new dataset is introduced:
 
-The function `confint` gives you confidence intervals for the fitted parameters. Here we have the same issue as with `coefficients`: we infer an entire distribution and not a parameter (and in any case, our parameters do not have confidence intervals; they have a joint distribution). Nevertheless, we can compute the analogue to confidence intervals from the distribution we have inferred.
+x = runif(100,-10,10)
+y = rnorm(n = 200, m = 0, 5)
+newD = data.frame(y=y, x=x)
 
-If our posterior is distributed as $\mathbf{w} \sim N(\mathbf{m},\mathbf{S})$ then component $i$ of the weight vector is distributed as $w_i \sim N(m_i,\mathbf{S}_{i,i})$. From this, and the desired fraction of density you want, you can pull out the thresholds that match the quantiles you need.
+```{r Predict}
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Fitted.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Predict.R")
 
-You take the `level` parameter of the function and get the threshold quantiles by exploiting that a normal distribution is symmetric. So you want the quantiles to be `c(level/2, 1-level/2)`. From that, you can get the thresholds using the function `qnorm`.
+x = runif(100,-10,10)
+y = rnorm(n = 200, m = 0, 5)
+newD = data.frame(y=y, x=x)
 
-```{r}
-# YOUR IMPLEMENTATION
+predict(fittedModel, newData = newD)
 ```
 
-#### deviance
+This allows for continuous optimization of the model as more data (under the same formula) is introduced.
 
-This function just computes the sum of squared distances from the predicted response variables to the observed. This should be easy enough to compute if you could get the squared distances, or even if you only had the distances and had to square them yourself. Perhaps there is a function that gives you that?
+------------------------------------------------------------------------------
 
-```{r}
-# YOUR IMPLEMENTATION
-```
+To install the package:
+install.packages("blm")
+library(blm)
 
-#### fitted
-
-This function should give you the fitted response variables. This is *not* the response variables in the data you fitted the model to, but instead the predictions that the model makes.
-
-```{r}
-# YOUR IMPLEMENTATION
-```
-
-#### plot
-
-This function plots your model. You are pretty free to decide how you want to plot it, but I could imagine that it would be useful to see an x-y plot with a line going through it for the fit. If there are more than one predictor variable, though, I am not sure what would be a good way to visualise the fitted model. There are no explicit rules for what the `plot` function should do, except for plotting something so you can use your imagination.
-
-```{r}
-# YOUR IMPLEMENTATION
-```
-
-#### predict
-
-This function should make predictions based on the fitted model. Its interface is
-
-```r
-predict(object, ...)
-```
-
-but the convention is that you give it new data in a variable `newdata`. If you do not provide new data, it instead gives you the predictions on the data used to fit the model.
-
-```{r}
-# YOUR IMPLEMENTATION
-```
-
-#### print
-
-This function is what gets called if you explicitly print an object or if you just write an expression that evaluates to an object of the class in the R terminal. Typically it prints a very short description of the object.
-
-For fitted objects, it customarily prints how the fitting function was called and perhaps what the fitted coefficients were or how good the fit was. You can check out how `lm` objects are printed to see an example.
-
-If you want to print how the fitting function was called you need to get that from when you fit the object in the `blm` constructor. It is how the constructor was called that is of interest, after all. Inside that function, you can get the way it was called by using the function `sys.call`.
-
-```{r}
-# YOUR IMPLEMENTATION
-```
-
-#### residuals
-
-This function returns the residuals of the fit. That is the difference between predicted values and observed values for the response variable.
-
-```{r}
-# YOUR IMPLEMENTATION
-```
-
-#### summary
-
-This function is usually used as a longer version of print. It gives you more information about the fitted model.
-
-It does more than this, however. It returns an object with summary information. What that actually means is up to the model implementation so do what you like here.
-
-```{r}
-# YOUR IMPLEMENTATION
-```
+------------------------------------------------------------------------------
 
