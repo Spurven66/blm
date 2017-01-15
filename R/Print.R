@@ -9,16 +9,18 @@
 #' @export
 
 print.blm <- function(x, ...) {
-  ##Formula = how the fitting was called
   cat("Bayesian Linear Model: ", "\n")
   print(x$formula)
   cat("\n")
-  cat("Fitted coefficients: ", coef(x),"\n")
-  cat("Mean: ", x$mean,"\n")
-  cat("Goodness of fit: ", x$sigma, "\n")
-  cat("How the fit was done: ")
+  cat("Call: ")
+  cat("\n")
   print(x$call)
+  cat("\n")
+  cat("Fitted coefficients (mean): ","\n")
+  print(coef(x))
+  cat("\n")
+  cat("Covariance: ", "\n")
+  print(x$sigma)
+  cat("\n")
 }
-
-print(fittedModel)
 

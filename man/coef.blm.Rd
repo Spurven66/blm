@@ -7,7 +7,7 @@
 \method{coef}{blm}(object, ...)
 }
 \arguments{
-\item{object}{A formula describing the model of class blm}
+\item{object}{A (fitted) object of class blm}
 
 \item{...}{Additional data, for example a data frame. Feel free to add other options.}
 }

@@ -9,7 +9,11 @@ blm(model, alpha, beta, data)
 \arguments{
 \item{model}{A formula describing the model.}
 
-\item{alpha}{Precision hyperparameter}
+\item{alpha}{Covariance from prior}
+
+\item{beta}{Precision hyperparameter}
+
+\item{data}{data for estimation, in data frame.}
 
 \item{...}{Additional data, for example a data frame. Feel free to add other options.}
 }

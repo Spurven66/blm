@@ -4,19 +4,19 @@
 \alias{confint.blm}
 \title{confint}
 \usage{
-\method{confint}{blm}(model, parameter, interval = 0.95)
+\method{confint}{blm}(object, parm = 0, level = 0.95)
 }
 \arguments{
-\item{model}{A formula describing the model of class blm}
+\item{object}{An object of class blm}
 
-\item{parameter}{Parameter to calculate confidence interval for}
+\item{parm}{Parameter to calculate confidence interval for. Default 0 to return confidence interval for all weights}
 
-\item{interval}{Percentage of confidence interval limit, standard = 95%}
+\item{level}{Percentage of confidence interval limit, standard = 95%}
 
 \item{...}{Additional data, for example a data frame. Feel free to add other options.}
 }
 \value{
-A confidence interval for parameter
+A confidence interval for weights
 }
 \description{
 Calculate confidence interval of fitted parameters

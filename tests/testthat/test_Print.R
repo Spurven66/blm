@@ -1,18 +1,16 @@
 context("print")
 
-setwd("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R")
-source("Print.R")
 
-x <- runif(10)
-y <- rnorm(10, x, 1)
-z <- rnorm(10)
-w0 <- rnorm(1) ; w1 <- rnorm(1)
-fittedModel = blm(y ~ x + z, w0,w1, data.frame(x=x, y=y, z=z))
+test_that("The print function returns right size print of type Character", {
+  for(i in 1:length(modelList)){
+    expLength = 14 + nrow(modelList[[i]]$sigma)
 
-string = print(fittedModel)
+    pri = capture.output(print(modelList[[i]]))
+    expect_that(length(pri) == expLength, is_true())
+    expect_that(pri, is_a("character"))
 
-test_that("The print function contains all the right fields"{
-  expect_that(print(fittedModel), matches("Bayesian Linear Model:"))
+  }
 })
+
 
 

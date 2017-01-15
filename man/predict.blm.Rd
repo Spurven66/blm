@@ -4,16 +4,18 @@
 \alias{predict.blm}
 \title{Predict}
 \usage{
-\method{predict}{blm}(object, ...)
+\method{predict}{blm}(object, newData, ...)
 }
 \arguments{
-\item{object}{fitted model of type blm
+\item{object}{fitted model of type blm}
+
+\item{newData}{NewData to fit the model to - the posterior of the object will be used for prior
 If you do not provide new data, it instead gives you the predictions on the data used to fit the model.}
 
 \item{...}{additional arguments affecting the predictions produced.}
 }
 \value{
-predicted values based on fitted model
+predicted values of y based on fitted model and set of data
 }
 \description{
 make predictions based on the fitted model
