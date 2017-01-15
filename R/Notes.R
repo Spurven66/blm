@@ -1,3 +1,13 @@
+#’ bayesianLinearModel: Visualising and analysing bayesian linear models.
+#'
+#’ The package provides functionality to analyse and test bayesian linear models
+#’
+#'The purpose of this package is to provide an extensive toolset of functions
+#'for diverse functionality when analysing and intepretting data in a Bayesian statistical context.
+#'
+#’ @docType package
+#’ @name blm
+
 #fittedModel
 
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/blm.R")

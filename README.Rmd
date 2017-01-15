@@ -8,13 +8,13 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, include = FALSE)
 library(ggplot2)
 ```
 
 #Bayesian Linear Model
 ###A statistical toolset for performing bayesian linear analysis on data
-The purpose of this package is to provide an extensive toolset of functions for diverse functionality when analysing and intepretting dat in a Bayesian statistical context. 
+The purpose of this package is to provide an extensive toolset of functions for diverse functionality when analysing and intepretting data in a Bayesian statistical context. 
 
 ------------------------------------------------------------------------------
 
@@ -90,9 +90,9 @@ print(fittedModel)
 ```
 
 Plot():
-```{r plot}
+```{r plot, cache=TRUE}
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Plot.R")
-#plot(fittedModel)
+plot(fittedModel)
 
 ```
 
