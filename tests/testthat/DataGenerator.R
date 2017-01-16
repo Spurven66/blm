@@ -44,7 +44,7 @@ fittedModel4 = blm(y ~ x + z, 1, 1, data.frame(y=y, x=x, z=z))
 
 #5
 x <- runif(100,-10,10)
-y <- rnorm(n = 200, m = 0, 5)
+y <- rnorm(n = 200, m = x, 5)
 z <- rnorm(10)
 t <- rnorm(n = 100, m = 2, 5)
 fittedModel4 = blm(y ~ x + z*t, 1, 1, data.frame(y=y, x=x, z=z, t=t))

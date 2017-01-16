@@ -3,7 +3,7 @@
 #' This function should give you the fitted response variables.
 #'
 #' @param object   An object class blm
-#' @param ...     Additifonal data, for example a data frame. Feel free to add other options.
+#' @param ...     Additifonal data
 #'
 #' @return the fitted response variables.
 #' @export
@@ -22,6 +22,6 @@ fitted.blm = function(object, ...){
     results[i,1] = t(mean)%*%phi[i,]
     results[i,2] = var + t(phi[i,]) %*% sigma %*% phi[i,]
   }
-  colnames(results) = c("Predicted value","Sigma")
+  colnames(results) = c("Predicted value","variance")
   results
 }

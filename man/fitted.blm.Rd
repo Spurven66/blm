@@ -9,7 +9,7 @@
 \arguments{
 \item{object}{An object class blm}
 
-\item{...}{Additifonal data, for example a data frame. Feel free to add other options.}
+\item{...}{Additifonal data}
 }
 \value{
 the fitted response variables.

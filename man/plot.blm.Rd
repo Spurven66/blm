@@ -4,15 +4,19 @@
 \alias{plot.blm}
 \title{Plot}
 \usage{
-\method{plot}{blm}(x, ...)
+\method{plot}{blm}(x, fit = FALSE, newData = NULL, ...)
 }
 \arguments{
-\item{x}{A fitted x of class blm}
+\item{x}{An objct of class blm}
+
+\item{fit}{Should target variables (y axis) be plotted from fitted or data values}
+
+\item{newData}{for plot of new predicted target variable values, add new Data and assign fit = TRUE}
 
 \item{...}{Additifonal data, for example a data frame. Feel free to add other options.}
 }
 \value{
-x-y plot with a line going through it for the fit
+if fit = FALSE: x-y plot with a line going through it for the fit, if fit = TRUE and newData assigned, a plot is returned with original data and line (blue) and red data points for the predicted target variables
 }
 \description{
 This function plots blm models

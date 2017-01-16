@@ -3,9 +3,8 @@
 #' make predictions based on the fitted model
 #'
 #' @param object fitted model of type blm
-#' @param newData NewData to fit the model to - the posterior of the object will be used for prior
-#' If you do not provide new data, it instead gives you the predictions on the data used to fit the model.
-#' @param ...     additional arguments affecting the predictions produced.
+#' @param newData NewData to fit the model to - the posterior of the object will be used for prior. If you do not provide new data, it instead gives you the predictions on the data used to fit the model.
+#' @param ...     additional arguments
 #'
 #' @return predicted values of y based on fitted model and set of data
 #' @export

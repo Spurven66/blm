@@ -7,9 +7,9 @@
 #' @param alpha   Covariance from prior
 #' @param data    data for estimation, in data frame.
 #'
-#' @param ...     Additional data, for example a data frame. Feel free to add other options.
+#' @param ...     Additional data
 #'
-#' @return A fitted model.
+#' @return An Object of class .blm, containing the inputted information as well as the fitted values of mean and sigma.
 #' @export
 
 blm <- function(model, alpha, beta, data,...) {

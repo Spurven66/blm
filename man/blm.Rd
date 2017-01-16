@@ -15,10 +15,10 @@ blm(model, alpha, beta, data, ...)
 
 \item{data}{data for estimation, in data frame.}
 
-\item{...}{Additional data, for example a data frame. Feel free to add other options.}
+\item{...}{Additional data}
 }
 \value{
-A fitted model.
+An Object of class .blm, containing the inputted information as well as the fitted values of mean and sigma.
 }
 \description{
 Fits a model, given as a formula, optionally with data provided through the "..." parameter.
