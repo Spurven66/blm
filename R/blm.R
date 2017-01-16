@@ -13,13 +13,7 @@
 #' @export
 
 blm <- function(model, alpha, beta, data,...) {
-  if(!is.data.frame(data)){
-    if(is.matrix(data)){
-      warning("Default data type is data.frame(). Conversion to data frame is attempted")
-      data = as.data.frame(data)
-    }
-    else stop("Data must be data frame or matrix")
-  }
+  if(!is.data.frame(data)) stop("Data must be data frame")
 
   ##Calculation of model matrix
   phiX = model.matrix(model, data = data)

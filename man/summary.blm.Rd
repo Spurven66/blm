@@ -7,9 +7,9 @@
 \method{summary}{blm}(object, ...)
 }
 \arguments{
-\item{...}{Additifonal data, for example a data frame. Feel free to add other options.}
+\item{object}{fitted model of class blm}
 
-\item{model}{fitted model of class blm}
+\item{...}{Additifonal data}
 }
 \value{
 returns an object with summary information

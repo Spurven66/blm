@@ -12,7 +12,7 @@
 \item{...}{Additional data, for example a data frame. Feel free to add other options.}
 }
 \value{
-a numeric vector with the parameters named from a fitted model
+a numeric vector with the coefficients from a fitted model
 }
 \description{
 Retrieve parameters of the fitted model

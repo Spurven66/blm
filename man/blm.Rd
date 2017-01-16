@@ -4,7 +4,7 @@
 \alias{blm}
 \title{Bayesian linear model.}
 \usage{
-blm(model, alpha, beta, data)
+blm(model, alpha, beta, data, ...)
 }
 \arguments{
 \item{model}{A formula describing the model.}

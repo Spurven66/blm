@@ -7,9 +7,9 @@
 \method{deviance}{blm}(object, ...)
 }
 \arguments{
-\item{...}{Additifonal data, for example a data frame. Feel free to add other options.}
+\item{object}{A formula describing the model of class blm}
 
-\item{model}{A formula describing the model of class blm}
+\item{...}{Additifonal data, for example a data frame. Feel free to add other options.}
 }
 \value{
 a numeric vector with sum of squared distances from the predicted response variables to the observed

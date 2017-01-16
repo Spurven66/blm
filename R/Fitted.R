@@ -22,6 +22,6 @@ fitted.blm = function(object, ...){
     results[i,1] = t(mean)%*%phi[i,]
     results[i,2] = var + t(phi[i,]) %*% sigma %*% phi[i,]
   }
-  colnames(results) = c("Predicted (mean) value","Sigma")
+  colnames(results) = c("Predicted value","Sigma")
   results
 }

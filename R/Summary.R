@@ -2,8 +2,8 @@
 #'
 #' This function returns an oject with a summary of the fitted model
 #'
-#' @param model   fitted model of class blm
-#' @param ...     Additifonal data, for example a data frame. Feel free to add other options.
+#' @param object   fitted model of class blm
+#' @param ...     Additifonal data
 #'
 #' @return returns an object with summary information
 #' @export

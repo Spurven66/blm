@@ -1,14 +1,14 @@
 ---
 title: "Bayesian linear regression"
 author: "Simon Grund"
-date: "`r Sys.Date()`"
-output:
-  md_document:
-    variant: markdown_github
+date: r Sys.Date()
+output: word_document
+#  md_document:
+#    variant: markdown_github
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, include = FALSE)
+knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 ```
 
@@ -20,36 +20,36 @@ The purpose of this package is to provide an extensive toolset of functions for 
 
 A short outline of the functions contained in the packages:
 
-*blm <- function(model, alpha, beta, data,...) 
-Takes a prior distribution of model parameters and update it to a posterior
-distribution, based on observed data. This results in a fitted model.
+* blm <- function(model, alpha, beta, data,...) 
+  Takes a prior distribution of model parameters and update it to a posterior
+  distribution, based on observed data. This results in a fitted model.
 
-*residuals.blm = function(object,...)
-Calulates the difference between predicted values and observed values for the response variable.
+* residuals.blm = function(object,...)
+  Calulates the difference between predicted values and observed values for the response variable.
 
-*deviance.blm = function(object,...)
-Calculates the sum of squared distances from the predicted response variables to the observed
+* deviance.blm = function(object,...)
+  Calculates the sum of squared distances from the predicted response variables to the observed
 
-*print.blm = function(x, ...) 
-Shortly describes objects of class .blm
+* print.blm = function(x, ...) 
+  Shortly describes objects of class .blm
 
-*summary.blm = function(object, ...)
-More extensive describtion of objects of class .blm
+* summary.blm = function(object, ...)
+  More extensive describtion of objects of class .blm
 
-*plot.blm = function(object,...)
-plots a fitted model, based on observed and fitted variables.
+* plot.blm = function(object,...)
+  plots a fitted model, based on observed and fitted variables.
 
-*fitted.blm = function(object, ...)
-Calculates the fitted response variables.
+* fitted.blm = function(object, ...)
+  Calculates the fitted response variables.
 
-*predict.blm = function(object, newData,...)
-predicted values of the response variable based on a fitted model and a new set of data
+* predict.blm = function(object, newData,...)
+  predicted values of the response variable based on a fitted model and a new set of data
 
-*coef.blm = function(object, ...)
-Extracts the coefficients from a fitted model
+* coef.blm = function(object, ...)
+  Extracts the coefficients from a fitted model
 
-*confint.blm = function(object, parm=0, level=0.95,...)
-confidence interval for weights 
+* confint.blm = function(object, parm=0, level=0.95,...)
+  confidence interval for weights 
 
 ------------------------------------------------------------------------------
 ##Example of use
@@ -92,6 +92,7 @@ print(fittedModel)
 Plot():
 ```{r plot, cache=TRUE}
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Plot.R")
+source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Coef.R")
 plot(fittedModel)
 
 ```
@@ -101,7 +102,6 @@ A more extensive view of the fitted model is provided calling summary. The summa
 Summary():
 ```{r Summary}
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Summary.R")
-source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Coef.R")
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Residuals.R")
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/Deviance.R")
 source("C:/Users/simon/OneDrive/Dokumenter/GitHub/blm/R/confint.R")

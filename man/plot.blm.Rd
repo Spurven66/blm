@@ -4,10 +4,10 @@
 \alias{plot.blm}
 \title{Plot}
 \usage{
-\method{plot}{blm}(object, ...)
+\method{plot}{blm}(x, ...)
 }
 \arguments{
-\item{object}{A fitted object of class blm}
+\item{x}{A fitted x of class blm}
 
 \item{...}{Additifonal data, for example a data frame. Feel free to add other options.}
 }
